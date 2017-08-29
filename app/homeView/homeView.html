@@ -1,0 +1,267 @@
+<header class="container-fluid" xmlns="http://www.w3.org/1999/html">
+    <!--Posizione Logo piccolo in alto a sinistra-->
+    <div class="nav navbar-nav navbar-left">
+        <img id=logoPiccolo src="loginView/logodd.PNG"> <!--id corrisponde al nome, src alla posizione dell'immagine-->
+    </div>
+
+    <!--ul=unorderedList: inserisco funzione cerca, funzione scrivi e il LogIn-->
+    <ul class="nav navbar-nav navbar-right"> <!--Posiziono tutto in alto a destra-->
+        <li class="homeSearch"> <!--Spazio testo per cercare-->
+            <input type="text" class="form-control" placeholder="Search" ng-model="ricerca.datiDaRicercare"> <!--Prendo ciò che viene scitto nell'input e lo salvo nella varibile datiDaRicercare-->
+            dati da ricercare: {{ricerca.datiDaRicercare}}
+            <div class="input-group-btn">
+            </div>
+        </li>
+        <li class="active">
+            <a href="#!ricercaView">
+                <button class="btn btn-default"  type="submit">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
+            </a>
+        </li>
+        <li class="active">
+            <a href="#!loginView">
+                <span class="btn btn-default" type="submit">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                </span>
+            </a>
+        </li>
+        <li class="active">
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i><span></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#!profiloUtenteView">Profilo Personale</a></li>
+                    <li><a href="#!ritiroPremioView">Ritiro/Storico premi vinti</a></li>
+                    <li><a href="#" class="center-block btn-sm btn-default"  ng-click="logout()"; id="logoutButton">Logout</a></li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</header>
+
+<div class="sidenav">
+    <div class="container-fluid">
+        <div class="col-md-5">
+            <div class="row">
+                <div class="dropdown show">
+                    <button type="button" class="btn btn-default"  data-toggle="dropdown">
+                        Scrivi Post
+                    </button>
+                    <div class="dropdown-menu">
+                        <div class="container-fluid">
+                            <p>Scegli il formato del post:</p>
+                            <br>
+                            <li><button><a class="glyphicon glyphicon-pencil" href="#!fotoPostView">Foto</a> </button></li>
+                            <div class="row"><button type="button" class="btn btn-default"><a href="#!recensionePostView">Recensione</a></button></div>
+                            <div class="row"><button type="button" class="btn btn-default"><a href="#!articoloPostView">Articolo</a></button></div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+                <div class="row" ng-if="dati.user.ruolo==='trender'">
+                    <button type="button" class="btn btn-default">
+                    <a href="#!trendAttiviView">Trend Attivi</a></button>
+                </div>
+
+
+
+            <div class="row">
+                <div class="container-fluid">
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Cosa sono i Trend?</button>
+                </div>
+            </div>
+           <!-- <div class="row">
+                <button type="button" class="btn btn-default"><a href="#!classificaTrendView">Classifica Trend</a></button>
+            </div>
+            <div class="row">
+                <button type="button" class="btn btn-default"><a href="#!profiloAltroUtente">Altro Utente</a></button>
+            </div> -->
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="col-md-7">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="col-md-3">
+                    <button type="button" class="btn btn-default">
+                        <a href="" on-click="event.preventDefault();" ng-click="changeView(1);">Articoli</a>
+                    </button>
+                </div>
+                <div class="col-md-3">
+                    <button type="button" class="btn btn-default">
+                        <a href="" on-click="event.preventDefault();" ng-click="changeView(2);">Trend Attivi</a>
+                    </button>
+                </div>
+                <div class="col-md-3">
+                    <button type="button" class="btn btn-default">
+                        <a href="" on-click="event.preventDefault();" ng-click="changeView(3);">Recensioni</a>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="div1"ng-if="currentPosition==1">
+            <div class="row">
+                <div class="container-fluid">
+                    <br>
+                    <ul class="media-list">
+                        <li class="media" ng-repeat="articolo in dati.articles | orderBy: '-date' :true">
+                            <div class="media-body">
+                                <h4 class="media-heading"><strong>{{articolo.title}}</strong></h4>
+                                <p>{{articolo.post}}</p>
+                                <p>pubblicato da: {{articolo.name}} {{articolo.surname}}</p>
+                                <p>{{articolo.categoria}}</p>
+                                <button type="submit" class="glyphicon glyphicon-chevron-right" ng-click="showPostArticolo(articolo.$id)" data-target="#visualizzaPostModal" data-toggle="modal"></button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="div2"ng-if="currentPosition==2">
+            <div class="row">
+                <div class="container-fluid">
+                    <div class="container-fluid">
+                        <br>
+                        <ul class="media-list">
+                            <li class="media" ng-repeat="trend in dati.trends | orderBy: '-date' :true">
+                                <div class="media-body">
+                                    <h4 class="media-heading"><strong>{{trend.title}}</strong></h4>
+                                    <p>{{trend.post}}</p>
+                                    <p>{{trend.trend}}</p>
+
+                                    <p>pubblicato da: {{trend.name}} {{trend.surname}}</p>
+                                    <button type="submit" class="glyphicon glyphicon-chevron-right" ng-click="showPostTrend(trend.$id)" data-target="#visualizzaPostModal" data-toggle="modal"></button>
+                                </div>
+                                <hr/>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div id="div3" ng-if="currentPosition==3">
+                <br>
+                <ul class="media-list">
+                    <li class="media" ng-repeat="recensione in dati.reviews | orderBy: '-date' :true">
+                        <div class="media-body">
+                            <h4 class="media-heading"><strong>{{recensione.title}}</strong></h4>
+                            <p>{{recensione.post}}</p>
+                            <p>pubblicato da: {{recensione.name}} {{recensione.surname}}</p>
+                            <button type="submit" class="glyphicon glyphicon-chevron-right" ng-click="showPostRecensione(recensione.$id)" data-target="#visualizzaPostModal" data-toggle="modal"></button>
+                        </div>
+                        <hr/>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+            <div id="div6" ng-if="currentPosition==6">
+                rake it up
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+</div>
+
+<div class="row">
+    <!-- Modal: REGOLAMENTO TREND -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h3>Trend Topic</h3>
+                    <div class="container-fluid" id="regolamento">
+                        <p>Fatti conoscere e tieniti aggiornato su cosa sta succedendo adesso!</p>
+                        <br>
+                        <p>Da sapere:</p>
+                        <ul>
+                            <li>I topic "Trend" sono sotto-categorie temporanee;</li>
+                            <li>Tutti gli utenti di More Life possono partecipare ai "Trend" attivi, solo i "Trender" possono crearli;</li>
+                            <li>I "Trend" riguardano eventi reali di ogni genere (moda, food, lifestyle, tech, etc.). </li>
+                        </ul>
+                        <p>Perchè partecipare e scrivere un post nella sezione "Trend"?</p>
+                        <ul>
+                            <li>Per far sapere a tutti cosa pensi degli argomenti più trendy del momento; </li>
+                            <li>I post della sezione "Trend" hanno maggiore visibilità in apposite pagine del sito;</li>
+                            <li>Tutti i post vengono ordinati, in base al loro rating, in una specifica classifica relativa al "Trend" scelto;</li>
+                            <li>I post con un rating maggiore, a chiusura del "Trend", possono ricevere premi dagli sponsor/Trender;</li>
+                            <li>Partecipare ad "Trend" ti da la possibilità di essere conosciuto nella community, se il tuo post viene considerato interessante;</li>
+                            <li>Ogni "Trend" è indipendente, la classifica dipende solo e soltanto dai post di quel "Trend". </li>
+                        </ul>
+                        <p>Cosa è la qualifica "Trender"?</p>
+                        <ul>
+                            <li>La qualifica "Trender" ti garantisce la possibilità di poter creare "Trend" e mettere in palio premi per il/i migliore/i post; </li>
+                            <li>Un utente diventa "Trender" quando almeno 10 post, di sua proprietà, hanno avuto un buon rating nella classifica del "Trend".</li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Ok, ho capito!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div id="visualizzaPostModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h4> <p type="text" name="title">{{showPostData.title}} <p/> </h4>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="button" class="glyphicon glyphicon-star-empty" ng-click="showPost(showPostData.$id)">Preferito</button>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-body">
+                    <p name="post">{{showPostData.post}}</p>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                    <div class="col-md-2">
+                        <p> {{showPostData.surname}} </p>
+                        <p>{{showPostData.trend}}</p>
+                        <p>{{showPostData.categoria}}</p>
+                    </div>
+                    <div class="col-md-2">
+                        <p> {{showPostData.name}} </p>
+                    </div>
+                </div>
+
+                    <fieldset class="rating">
+
+                        <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="3 stars"></label>
+                        <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="2 stars"></label>
+                        <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="1 star"></label>
+                    </fieldset>
+                    <!--<button type="button" class="btn btn-sm btn-primary" ng-click="updatePost(editPostData.$id)">Update Post</button> -->
+                    <button type="button" class="glyphicon glyphicon-remove" data-dismiss="modal"></button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
