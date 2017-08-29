@@ -1,0 +1,64 @@
+<header class="container-fluid" xmlns="http://www.w3.org/1999/html">
+    <!--Posizione Logo piccolo in alto a sinistra-->
+    <div class="nav navbar-nav navbar-left">
+        <img id=logoPiccolo src="loginView/logo.PNG"> <!--id corrisponde al nome, src alla posizione dell'immagine-->
+    </div>
+
+    <!--ul=unorderedList: inserisco funzione cerca, funzione scrivi e il LogIn-->
+    <ul class="nav navbar-nav navbar-right"> <!--Posiziono tutto in alto a destra-->
+        <li class="active">
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i><span></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#!profiloUtenteView">Profilo Personale</a></li>
+                    <li><a href="#!ritiroPremioView">Ritiro/Storico Premi Vinti</a></li>
+                    <li><a href="#" class="center-block btn-sm btn-default"  ng-click="logout()"; id="logoutButton">Logout</a></li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</header>
+<div class="container" ng-controller= "articoloPostViewCtrl as $ctrl">
+    <form role="form" name="postForm" ng-submit="createPostArticolo()" novalidate="">
+        <legend>Create Post</legend>
+        <b>Descriptive image:</b>
+        <file-upload on-change="$ctrl.onChange">
+        </file-upload>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="form-group" ng-class="{'has-error': postForm.titleTxt.$invalid && postForm.titleTxt.$touched}">
+                    <label for="titleTxt">Post Title</label>
+                    <input type="text" name="titleTxt" class="form-control" placeholder="Title" ng-model="article.titleTxt" ng-minlength = "2" required="">
+                    <small class="help-block" ng-show="postForm.titleTxt.$error.minlength && postForm.titleTxt.$touched">Il titolo deve contenere almeno 2 caratteri!</small>
+                </div>
+
+                <div class="form-group" ng-class="{'has-error': postForm.subtitleTxt.$invalid && postForm.subtitleTxt.$touched}">
+                    <label for="subtitleTxt">SottoTitolo</label>
+                    <input type="text" name="titleTxt" class="form-control" placeholder="SubTitle" ng-model="article.subtitleTxt" ng-minlength = "3" >
+                    <small class="help-block" ng-show="postForm.subtitleTxt.$error.minlength && postForm.subtitleTxt.$touched">Il sottotitolo, se inserito, deve contenere almeno 3 caratteri</small>
+                </div>
+
+                <div class="form-group" ng-class="{'has-error': postForm.postTxt.$invalid && postForm.postTxt.$touched}">
+                    <label for="postTxt">Post</label>
+                    <textarea name="postTxt" class="form-control" placeholder="Post" ng-model="article.postTxt" ng-minlength="20" required=""></textarea>
+                    <small class="help-block" ng-show="postForm.postTxt.$error.minlength && postForm.postTxt.$touched">Please enter a valid post.</small>
+                </div>
+
+                <div class="form-group" ng-class="{'has-error': postForm.categoria.$invalid && postForm.categoria.$touched}">
+                    <label for="categoria">Categoria</label>
+                    <input type="text" name="categoria" class="form-control" placeholder="Categoria" ng-model="article.categoria" ng-minlength = "2" required="">
+                    <small class="help-block" ng-show="postForm.categoria.$error.minlength && postForm.categoria.$touched">Il titolo deve contenere almeno 2 caratteri!</small>
+                </div>
+
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" ng-disabled="postForm.$invalid">Add Post</button>
+                    <button class="active"><a href="#!homeView">Annulla</a></button>
+                </div>
+
+
+            </div>
+        </div>
+    </form>
+</div>
