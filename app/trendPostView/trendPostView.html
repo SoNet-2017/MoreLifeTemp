@@ -1,0 +1,23 @@
+<div class="container">
+    <form role="form" name="postForm" ng-submit="createPostTrend()" novalidate="">
+        <legend>Post Trend</legend>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="form-group" ng-class="{'has-error': postForm.titleTxt2.$invalid && postForm.titleTxt2.$touched}">
+                    <label for="titleTxt2">Post Title</label>
+                    <input type="text" name="titleTxt2" class="form-control" placeholder="Title" ng-model="article.titleTxt2" ng-minlength = "2" required="">
+                    <small class="help-block" ng-show="postForm.titleTxt2.$error.minlength && postForm.titleTxt2.$touched">Please enter a valid title for post.</small>
+                </div>
+                <div class="form-group" ng-class="{'has-error': postForm.postTxt2.$invalid && postForm.postTxt2.$touched}">
+                    <label for="postTxt2">Post</label>
+                    <textarea name="postTxt2" class="form-control" placeholder="Post" ng-model="article.postTxt2" ng-minlength="20" required=""></textarea>
+                    <small class="help-block" ng-show="postForm.postTxt2.$error.minlength && postForm.postTxt2.$touched">Please enter a valid post.</small>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" ng-disabled="postForm.$invalid">Add Post</button>
+                    <button class="active"><a href="#!homeView">Annulla</a></button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,226 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+/* Header */
+/*.navbar-header h1 {
+  margin: 0;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  color: #333;
+}
+
+.navbar-nav {
+  list-style: none;
+  margin:0;
+}*/
+
+/* Main content */
+/*body {
+  padding-top: 0px;
+  padding-bottom: 70px;
+  background-color: white;
+}
+*/
+
+.media-object {
+  width: 100px;
+
+}
+
+#logoutButton:hover {
+  color: #E01F00;
+  margin-left: 1%;
+  margin-right: 1%;
+  text-align: right;
+}
+
+#logoutButton{
+  margin-left: 1%;
+  margin-right: 1%;
+  text-align: right;
+}
+
+/*  Navigation
+.navbar-center {
+  margin: 0 auto;
+  display: table;
+  table-layout: auto;
+  float: none;
+  width: 100%;
+}
+.navbar-center > li {
+  display: table-cell;
+  float: none;
+  text-align: center;
+} */
+.sidenav{
+  background-color: #c4e3f3;
+  float: left;
+}
+.navbar-default .navbar-center > .active > a,
+.navbar-default .navbar-center > .active > a:hover {
+  color: #F5F5F5;
+  background-color: transparent;
+}
+
+.navbar-default .navbar-center > li > a:hover {
+  color: #777;
+}
+
+.dropdown{
+  padding-left: 0px;
+  padding-top: 15px;
+  font-size: 20px;
+}
+.navbar-nav > li > a {
+  padding-left: 0px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  font-size: 20px;
+}
+
+/*h2{
+  text-align: center;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  color: #E01F00;
+}*/
+
+
+#logo{
+  float: left;
+  height: 30%;
+  width: 300px;
+}
+
+#logoPiccolo{
+  width:540px; /* you can use % */
+  height: 60px;
+  padding:10px 0px 10px 0px;
+}
+
+
+#boxLogin{
+  float: right;
+  width: 80%;
+  background-color: white;
+}
+
+#formRegistrazione{
+  width: 30%;
+  white-space:nowrap;
+  background-color: white;
+  padding-top: 1%;
+  padding-bottom: 10%;
+  padding-right: 42%;
+}
+
+#cosaSonoTrend{
+  margin-top: 2%;
+  white-space:nowrap;
+  background-color:  #c4e3f3;
+  margin-bottom: 3%;
+}
+
+#postHome{
+  background-color: #00CC33;
+  width: 90%;
+}
+
+#boxRegistrazione{
+  padding: 1% 20% 1% 20%
+
+}
+.homebutton{
+  display: block;
+  margin: 0 auto;
+  width: 100px;
+  size: 10px;
+
+}
+
+
+.postBox{
+  margin: 20px 5px 20px 5px;
+  padding: 10px 5px 10px 5px;
+  border: 5px;
+  border-color: #F5F5F5;
+
+}
+
+
+
+.homeSearch{
+  padding-right: 0px;
+  padding-top: 15px;
+}
+
+
+
+homeBox {
+  background-color: red;
+  float: right;
+  width: 50%;
+}
+
+.blankspace{
+  margin:30px 10px 30px 10px;
+}
+
+#infoUtente{
+
+  background-color: #00CC33;
+}
+#immUtente{
+  float:left;
+  width:10%; /* you can use % */
+  height: 25%;
+
+}
+
+#postUtentevecchi{
+
+
+  background-color: white;
+}
+
+#regolamento{
+  background-color: #1c7496;
+}
+
+
+
+/*RatingPost*/
+fieldset, label { margin: 0; padding: 0; }
+body{ margin: 20px; }
+h1 { font-size: 1.5em; margin: 10px; }
+/****** Style Star Rating Widget *****/
+.rating {
+  border: none;
+  float: left;
+}
+.rating > input { display: none; }
+.rating > label:before {
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+.rating > .half:before {
+  content: "\f089";
+  position: absolute;
+}
+.rating > label {
+  color: #ddd;
+  float: right;
+}
+/***** CSS Magic to Highlight Stars on Hover *****/
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
+

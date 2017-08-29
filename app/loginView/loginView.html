@@ -1,0 +1,115 @@
+<!--Maeesaggio d'errore-->
+<div class="alert alert-danger alert-dismissible" role="alert" ng-if="error">Login failed! {{ error.message }}
+</div>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<form id="frmLogin" role="form" ng-submit="signIn()">
+    <!--Logo-->
+    <div class="jumbotron text-center" id="logoPaginaLogin">
+            <img src="loginView/logoddff.PNG" alt="...">
+    </div>
+
+    <!--Creo le due colonne in cui inserire da una parte i post a cui dare maggiore evidenza dall'altra il login/registrazione-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="container-fluid">
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal"><h2>Cosa sono i Trend?</h2></button>
+                </div>
+                <div class="container-fluid" id="postHome">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <p id="ciao">Post a cui dare maggiore evidenza</p>
+                        </div>
+                        <div class="row">
+                            <div class="media-body">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="container-fluid"  id="boxLogin">
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="txtEmail">Email</label>
+                            <input type="email" class="form-control" id="txtEmail" placeholder="Enter email" name="email" ng-model="user.email" style="width: 100%;" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="txtPass">Password</label>
+                            <input type="password" class="form-control" id="txtPass" placeholder="Password" name="password" ng-model="user.password" style="width: 100%;" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <button type="submit" class="btn btn-success center-block" style="width: 120px" >Login</button>
+                        </div>
+                        <div class="container-fluid" id="formRegistrazione">
+                            <div class="col-md-2">
+                                <div class="link"><a href="#!formRegistrazioneView">Oppure registrati!</a> <!--Link al form di registrazione-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="row">
+    <!-- Modal: REGOLAMENTO TREND -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+
+                <div class="modal-body">
+
+                    <h3>Trend Topic</h3>
+
+                    <div class="container-fluid" id="regolamento">
+                        <p>Fatti conoscere e tieniti aggiornato su cosa sta succedendo adesso!</p>
+                        <br>
+                        <p>Da sapere:</p>
+                        <ul>
+                            <li>I topic "Trend" sono sotto-categorie temporanee;</li>
+                            <li>Tutti gli utenti di More Life possono partecipare ai "Trend" attivi, solo i "Trender" possono crearli;</li>
+                            <li>I "Trend" riguardano eventi reali di ogni genere (moda, food, lifestyle, tech, etc.). </li>
+                        </ul>
+
+
+                        <p>Perchè partecipare e scrivere un post nella sezione "Trend"?</p>
+                        <ul>
+                            <li>Per far sapere a tutti cosa pensi degli argomenti più trendy del momento; </li>
+                            <li>I post della sezione "Trend" hanno maggiore visibilità in apposite pagine del sito;</li>
+                            <li>Tutti i post vengono ordinati, in base al loro rating, in una specifica classifica relativa al "Trend" scelto;</li>
+                            <li>I post con un rating maggiore, a chiusura del "Trend", possono ricevere premi dagli sponsor/Trender;</li>
+                            <li>Partecipare ad "Trend" ti da la possibilità di essere conosciuto nella community, se il tuo post viene considerato interessante;</li>
+                            <li>Ogni "Trend" è indipendente, la classifica dipende solo e soltanto dai post di quel "Trend". </li>
+                        </ul>
+
+                        <p>Cosa è la qualifica "Trender"?</p>
+                        <ul>
+                            <li>La qualifica "Trender" ti garantisce la possibilità di poter creare "Trend" e mettere in palio premi per il/i migliore/i post; </li>
+                            <li>Un utente diventa "Trender" quando almeno 10 post, di sua proprietà, hanno avuto un buon rating nella classifica del "Trend".</li>
+                        </ul>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Ok, ho capito!</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
